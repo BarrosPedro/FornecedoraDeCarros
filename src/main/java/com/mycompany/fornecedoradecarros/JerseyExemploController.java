@@ -35,15 +35,19 @@ public class JerseyExemploController {
 
     @GET
     @Path("adicionar")
-    public Response adicionar(@QueryParam("chassi") int chassi, @QueryParam("marca") String marca, @QueryParam("modelo") String modelo) {
-        Carro carro = new Carro(chassi, marca, modelo);
+    public Response adicionar(@QueryParam("chassi") int chassi, 
+                              @QueryParam("marca") String marca, 
+                              @QueryParam("modelo") String modelo,
+                              @QueryParam("ano") int ano,
+                              @QueryParam("preço") double preço) {
+        Carro carro = new Carro(chassi, marca, modelo, ano, preço);
         this.carroDAO.adicionar(carro);
         return Response.status(Status.OK).build();
     }
 
     @GET
-    @Path("consultarTodos")
-    public Response consultarTodos() {
+    @Path("consultarEstoque")
+    public Response consultarEstoque() {
         Gson gson = new Gson();
         return Response.status(Status.OK).entity(gson.toJson(carroDAO.recuperarTodos())).build();
     }
@@ -58,7 +62,7 @@ public class JerseyExemploController {
     }
 
     @GET
-    @Path("consultar")
+    @Path("consultarCarro")
     public Response consultar(@QueryParam("chassi") int chassi) {
         Gson gson = new Gson();
         return Response.status(Status.OK).entity(gson.toJson(carroDAO.recuperar(chassi))).build();

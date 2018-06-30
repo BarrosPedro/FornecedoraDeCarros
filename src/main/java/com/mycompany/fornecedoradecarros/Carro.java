@@ -16,17 +16,17 @@ public class Carro {
     int chassi;
     String marca;
     String modelo;
+    int ano;
+    double quilometragem;
 
-    public Carro(int chassi, String marca, String modelo) {
+    public Carro(int chassi, String marca, String modelo, int ano, double quilometragem) {
         this.marca = marca;
         this.modelo = modelo;
         this.chassi = chassi;
+        this.ano = ano;
+        this.quilometragem = quilometragem;
     }
 
-    public Carro(String marca, String modelo) {
-        this.marca = marca;
-        this.modelo = modelo;
-    }
 
     public Carro(int chassi) {
         this.chassi = chassi;
@@ -54,6 +54,22 @@ public class Carro {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public double getQuilometragem() {
+        return quilometragem;
+    }
+
+    public void setQuilometragem(double quilometragem) {
+        this.quilometragem = quilometragem;
     }
 
     @Override
