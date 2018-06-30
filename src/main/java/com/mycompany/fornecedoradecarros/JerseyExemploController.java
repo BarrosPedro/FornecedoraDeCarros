@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -39,14 +40,15 @@ public class JerseyExemploController {
                               @QueryParam("marca") String marca, 
                               @QueryParam("modelo") String modelo,
                               @QueryParam("ano") int ano,
-                              @QueryParam("preço") double preço) {
-        Carro carro = new Carro(chassi, marca, modelo, ano, preço);
+                              @QueryParam("quilometragem") int quilometragem) {
+        Carro carro = new Carro(chassi, marca, modelo, ano, quilometragem);
         this.carroDAO.adicionar(carro);
         return Response.status(Status.OK).build();
     }
 
     @GET
     @Path("consultarEstoque")
+    @Produces(MediaType.TEXT_PLAIN)
     public Response consultarEstoque() {
         Gson gson = new Gson();
         return Response.status(Status.OK).entity(gson.toJson(carroDAO.recuperarTodos())).build();
@@ -58,11 +60,11 @@ public class JerseyExemploController {
         Carro carro = new Carro(chassi);
         this.carroDAO.deletar(carro);
         return Response.status(Status.OK).build();
-
     }
 
     @GET
     @Path("consultarCarro")
+    @Produces(MediaType.TEXT_PLAIN)
     public Response consultar(@QueryParam("chassi") int chassi) {
         Gson gson = new Gson();
         return Response.status(Status.OK).entity(gson.toJson(carroDAO.recuperar(chassi))).build();

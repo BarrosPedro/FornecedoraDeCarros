@@ -17,9 +17,9 @@ public class Carro {
     String marca;
     String modelo;
     int ano;
-    double quilometragem;
+    int quilometragem;
 
-    public Carro(int chassi, String marca, String modelo, int ano, double quilometragem) {
+    public Carro(int chassi, String marca, String modelo, int ano, int quilometragem) {
         this.marca = marca;
         this.modelo = modelo;
         this.chassi = chassi;
@@ -64,11 +64,11 @@ public class Carro {
         this.ano = ano;
     }
 
-    public double getQuilometragem() {
+    public int getQuilometragem() {
         return quilometragem;
     }
 
-    public void setQuilometragem(double quilometragem) {
+    public void setQuilometragem(int quilometragem) {
         this.quilometragem = quilometragem;
     }
 
