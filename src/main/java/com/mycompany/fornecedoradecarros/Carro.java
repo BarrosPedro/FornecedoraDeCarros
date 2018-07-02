@@ -26,6 +26,13 @@ public class Carro {
         this.ano = ano;
         this.quilometragem = quilometragem;
     }
+     public Carro(String marca, String modelo, int ano, int quilometragem) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.quilometragem = quilometragem;
+    }
+
 
 
     public Carro(int chassi) {

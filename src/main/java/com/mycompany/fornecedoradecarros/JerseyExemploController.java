@@ -61,6 +61,17 @@ public class JerseyExemploController {
         this.carroDAO.deletar(carro);
         return Response.status(Status.OK).build();
     }
+     @GET
+    @Path("alterar")
+    public Response alterar(@QueryParam("chassi") int chassi, 
+                              @QueryParam("marca") String marca, 
+                              @QueryParam("modelo") String modelo,
+                              @QueryParam("ano") int ano,
+                              @QueryParam("quilometragem") int quilometragem) {
+        Carro carro = new Carro(chassi, marca, modelo, ano, quilometragem);
+        this.carroDAO.alterar(carro);
+        return Response.status(Status.OK).build();
+    }
 
     @GET
     @Path("consultarCarro")

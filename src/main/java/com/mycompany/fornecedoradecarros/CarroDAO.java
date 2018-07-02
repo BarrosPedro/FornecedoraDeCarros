@@ -7,7 +7,6 @@ package com.mycompany.fornecedoradecarros;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author pronatec
@@ -44,7 +43,16 @@ public class CarroDAO {
                 return carro;
             }
         }
-       return null;
+        return null;
+    }
+    
+    public void alterar(Carro t) {
+        for (Carro carro : this.carros) {
+            if (carro.getChassi() == t.getChassi()) {
+               this.carros.remove(carro);
+               this.carros.add(t);
+            }
+        }
     }
 
     public List<Carro> recuperarTodos() {
