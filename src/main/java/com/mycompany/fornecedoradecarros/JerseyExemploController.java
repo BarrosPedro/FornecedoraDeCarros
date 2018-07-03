@@ -26,9 +26,6 @@ import javax.ws.rs.core.Response.Status;
  * Root resource (exposed at "myresource" path)
  */
 // ALTERAR 
-
-
-
 @Path("FornCarros")
 public class JerseyExemploController {
 
@@ -38,13 +35,14 @@ public class JerseyExemploController {
         carroDAO = CarroDAO.getInstance();
     }
 
-    @POST
+    @GET
     @Path("adicionar")
-    public Response adicionar(@QueryParam("marca") String marca,
-                            @QueryParam("modelo") String modelo,
-                            @QueryParam("ano") int ano,
-                            @QueryParam("quilometragem") int quilometragem) {
-        Carro carro = new Carro(marca, modelo, ano, quilometragem);
+    public Response adicionar(@QueryParam("chassi") int chassi,
+            @QueryParam("marca") String marca,
+            @QueryParam("modelo") String modelo,
+            @QueryParam("ano") int ano,
+            @QueryParam("quilometragem") int quilometragem) {
+        Carro carro = new Carro(chassi, marca, modelo, ano, quilometragem);
         this.carroDAO.adicionar(carro);
         return Response.status(Status.OK).build();
 
@@ -58,7 +56,7 @@ public class JerseyExemploController {
         return Response.status(Status.OK).entity(gson.toJson(carroDAO.recuperarTodos())).build();
     }
 
-    @DELETE
+    @GET
     @Path("remover")
     public Response remover(@QueryParam("chassi") int chassi) {
         Carro carro = new Carro(chassi);
@@ -66,13 +64,14 @@ public class JerseyExemploController {
         return Response.status(Status.OK).build();
     }
 
-    @POST
+    @GET
     @Path("alterar")
-    public Response alterar(@QueryParam("marca") String marca,
-                            @QueryParam("modelo") String modelo,
-                            @QueryParam("ano") int ano,
-                            @QueryParam("quilometragem") int quilometragem) {
-        Carro carro = new Carro(marca, modelo, ano, quilometragem);
+    public Response alterar(@QueryParam("chassi") int chassi,
+            @QueryParam("marca") String marca,
+            @QueryParam("modelo") String modelo,
+            @QueryParam("ano") int ano,
+            @QueryParam("quilometragem") int quilometragem) {
+        Carro carro = new Carro(chassi, marca, modelo, ano, quilometragem);
         this.carroDAO.alterar(carro);
         return Response.status(Status.OK).build();
     }
