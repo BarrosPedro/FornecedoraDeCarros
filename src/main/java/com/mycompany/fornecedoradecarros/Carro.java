@@ -6,35 +6,30 @@
 package com.mycompany.fornecedoradecarros;
 
 import java.util.Objects;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author pronatec
  */
 public class Carro {
-
+    @Id
+    static int chassiGenerate = 0;
     int chassi;
     String marca;
     String modelo;
     int ano;
     int quilometragem;
 
-    public Carro(int chassi, String marca, String modelo, int ano, int quilometragem) {
+    public Carro(String marca, String modelo, int ano, int quilometragem) {
         this.marca = marca;
         this.modelo = modelo;
-        this.chassi = chassi;
+        this.chassi = chassiGenerate++;
         this.ano = ano;
         this.quilometragem = quilometragem;
     }
-     public Carro(String marca, String modelo, int ano, int quilometragem) {
-        this.marca = marca;
-        this.modelo = modelo;
-        this.ano = ano;
-        this.quilometragem = quilometragem;
-    }
-
-
-
+     
     public Carro(int chassi) {
         this.chassi = chassi;
     }
